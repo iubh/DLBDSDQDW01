@@ -4,7 +4,7 @@
 
 # Structuring
 
-## Intrarecord structuring
+## Intrarecord Structuring
 
 ### extracting subdata into new columns
 
@@ -29,3 +29,37 @@ customers = pd.DataFrame([
 customers["Address"] = customers["Street"].astype(str) + \
     ' , ' + customers["Zip Code"] + ' ' + customers["City"]
 
+## Interrecord Structuring
+
+### filtering
+
+# %% generate the data
+cars = pd.DataFrame([ \
+    ['VW', 'GOlf'], \
+    ['VW', 'Passat'], \
+    ['VW', 'Polo'], \
+    ['Mercedes', 'A-Class'], \
+    ['Mercedes', 'AMG'], \
+    ['Tesla', 'Model 3'], \
+    ['Tesla', 'Cybertruck'], \
+    ], columns=['Brand', 'Model']
+)
+
+# %% filter the data by brand
+cars.loc[cars.Brand == "VW"]
+
+### aggregation
+
+# %% generate the sample data
+sales = pd.DataFrame([ \
+    [2020, "January", 212182], \
+    [2020,"February",221921], \
+    [2020, "March", 152281], \
+    [2021, "January", 243822], \
+    [2021,"February",123212], \
+    [2021,"March",162319]
+    ], columns = ["Year", "Month", "Sales"]
+)
+
+# %% aggregate by group
+sales.groupby("Year").sum()
