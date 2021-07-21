@@ -62,5 +62,23 @@ print(output_string_2.getvalue())
 # %% compare outputs
 len(output_string.getvalue())
 
-# %%
+# %% compare outputs
 len(output_string_2.getvalue())
+
+# %% extract tables from the PDF
+import tabula
+
+# %% load tables from the PDF
+tab = tabula.read_pdf('UN_water_report.pdf', \
+    pages = '77')
+
+# %% show the data from the table as a pandas dataframe
+tab[0]
+# console output:
+#           Country  Rural  Urban  Unnamed: 0
+# 0        Cambodia   10.0    3.0         NaN
+# 1       Indonesia    3.5    7.5         NaN
+# 2         Lao PDR   14.0   10.0         NaN
+# 3     Philippines   20.0    9.0         NaN
+# 4        Viet Nam    6.0   15.0         NaN
+# 5  Yunnan (China)    6.0    3.0         NaN
