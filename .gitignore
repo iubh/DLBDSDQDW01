@@ -1,3 +1,7 @@
 *.code-workspace
 *.h5
 note_to_myself.txt
+*.exe
+*quotes*
+*.xml
+*.pdf
