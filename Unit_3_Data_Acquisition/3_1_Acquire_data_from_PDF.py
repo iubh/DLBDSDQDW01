@@ -15,12 +15,11 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 
 # %% load a sample PDF report
-url1 = "https://unesdoc.unesco.org/in/rest/"
-url2= "annotationSVC/DownloadWatermarkedAttachment/"
-url3 = "attach_import_db06f7c4-b33f"
-url4 = "-4833-be56-bbf54afdee3f?"
-url5= "_=375724eng.pdf"
-url = url1 + url2 + url3 + url4 + url5
+url = "https://unesdoc.unesco.org/in/rest/"
+url += "annotationSVC/DownloadWatermarkedAttachment/"
+url += "attach_import_db06f7c4-b33f"
+url += "-4833-be56-bbf54afdee3f?"
+url += "_=375724eng.pdf"
 urllib.request.urlretrieve(url, "UN_water_report.pdf")
 
 # %% read the PDF

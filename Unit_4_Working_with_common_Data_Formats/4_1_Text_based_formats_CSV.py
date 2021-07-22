@@ -23,3 +23,10 @@ data = pd.read_csv("Islands_noHeader.csv", \
 # first couple of lines
 data = pd.read_csv("Islands_meta.csv", sep = ";", \
     skiprows = range(0,4))
+
+# %% read a data file with UTF-8 encoding
+data = pd.read_csv("Islands.csv", sep = ";", \
+    skiprows = range(0,4), encoding = "utf-8")
+
+# %% writing data to file
+data.to_csv("Islands_output.csv", sep = ";")
