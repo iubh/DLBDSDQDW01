@@ -57,5 +57,14 @@ print(data_read)
 #  [0.09 0.79 0.4  0.15 0.3  0.35]
 #  [0.97 0.36 0.27 0.45 0.21 0.59]]
 
+# %% adding meta data to a data set
+dataset.attrs["User"] = "ME"
+
+# %% print the meta data for the data set
+for k in dataset.attrs.keys():
+    print(k, dataset.attrs[k])
+# console output:
+# User ME
+
 # %% close the file
 file.close()

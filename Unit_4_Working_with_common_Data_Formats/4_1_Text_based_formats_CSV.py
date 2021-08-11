@@ -4,6 +4,11 @@
 
 # Text-based Formats (CSV)
 
+# %% read data line by line as text
+with open('Islands.csv') as f:
+    content = f.read()
+    print(content)
+
 # %% load packages
 import pandas as pd
 
