@@ -44,9 +44,9 @@ stat, p = shapiro(data)
 print(stat, p)
 
 # %% read sample data
-df = pd.read_csv('data.csv')
-
-##### needs testing
+url = 'https://raw.githubusercontent.com/marsja/jupyter/'
+url += 'master/SimData/Data_to_Transform.csv'
+df = pd.read_csv(url)
 
 # %% apply square tranformation
 df.insert(len(df.columns), 'Squared', \
