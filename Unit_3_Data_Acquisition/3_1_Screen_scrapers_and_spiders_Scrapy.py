@@ -2,13 +2,13 @@
 # Data Quality & Data Wranlging
 # Course Code: DLBDSDQDW01
 
-# Screen Scrappers and Spiders - Scrapy
+# Screen Scrapers and Spiders - Scrapy
 
 # %% load packages
 import scrapy
 import os
 
-# %% start a scrappy project
+# %% start a scrapy project
 os.system('scrapy startproject quotes')
 
 ''' specify a spider in the ./quotes/quotes/spiders/Spider1.py script:

@@ -2,7 +2,7 @@
 # Data Quality & Data Wranlging
 # Course Code: DLBDSDQDW01
 
-# Screen Scrappers and Spiders - Selenium
+# Screen Scrapers and Spiders - Selenium
 
 # %% load packages
 from selenium import webdriver

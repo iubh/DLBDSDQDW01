@@ -2,9 +2,9 @@
 # Data Quality & Data Wranlging
 # Course Code: DLBDSDQDW01
 
-# Web Scrapping
+# Web Scraping
 
-# %% load packages
+# %% import modules
 import requests
 
 # %% load a web page
@@ -100,3 +100,5 @@ for i in range(0, 49):
 # %% print the number of found qoutes
 print(len(quoteList))
 # console output: 90
+
+# %%
