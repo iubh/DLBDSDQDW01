@@ -6,7 +6,7 @@
 
 ## Create an empty HDF5 dataset
 
-# %% load packages
+# %% import modules
 import h5py
 
 # %% create an HDF5 file
@@ -16,10 +16,10 @@ file = h5py.File('iu.h5','w')
 dataset = file.create_dataset("iu", (4, 6)) 
 
 # %% print information about the dataset
-print("Dataset shape is", dataset.shape )
+print("Dataset shape is", dataset.shape)
 print("Dataset name is", dataset.name)
 print("Dataset is a member of the group", \
-    dataset.parent )
+    dataset.parent)
 
 # %% close the file
 file.close()
@@ -49,8 +49,7 @@ data = np.random.rand(4*6).round(2).reshape(4, 6)
 dataset[...] = data
 
 # %% read the data back from the HDF5 file
-data_read = dataset[...]
-print(data_read)
+file["iu_numbers"][...]
 # console output:
 # [[0.65 0.96 0.77 0.33 0.19 0.93]
 #  [0.11 0.31 0.99 0.01 0.61 0.48]
@@ -58,13 +57,15 @@ print(data_read)
 #  [0.97 0.36 0.27 0.45 0.21 0.59]]
 
 # %% adding meta data to a data set
-dataset.attrs["User"] = "ME"
+dataset.attrs["User"] = "Christian Müller-Kett"
 
 # %% print the meta data for the data set
 for k in dataset.attrs.keys():
     print(k, dataset.attrs[k])
 # console output:
-# User ME
+# User Christian MÜller
 
 # %% close the file
 file.close()
+
+# %%

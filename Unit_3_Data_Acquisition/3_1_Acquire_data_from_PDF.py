@@ -81,3 +81,5 @@ tab[0]
 # 3     Philippines   20.0    9.0         NaN
 # 4        Viet Nam    6.0   15.0         NaN
 # 5  Yunnan (China)    6.0    3.0         NaN
+
+# %%

@@ -4,7 +4,7 @@
 
 # Normalization and standardization
 
-# %% load packages
+# %% import modules
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 
@@ -42,3 +42,5 @@ print(data_scaled)
 #  [-0.37931159 -0.70939126]
 #  [ 0.15060901 -0.55902154]
 #  [-0.89528691  1.91765618]]
+
+# %%

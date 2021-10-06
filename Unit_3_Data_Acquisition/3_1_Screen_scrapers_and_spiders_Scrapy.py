@@ -46,3 +46,5 @@ class QuotesSpider(scrapy.Spider):
 # %% start the project (from with the project directory)
 os.system('cd ./Unit_3_Data_Acquisition/quotes')
 os.system('scrapy crawl quotes -O quotes.json')
+
+# %%

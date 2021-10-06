@@ -30,3 +30,5 @@ tableToRead.to_pandas()
 # %% show metadata about the file
 file = pq.ParquetFile("myPQFile.parquet")
 file.metadata
+
+# %%

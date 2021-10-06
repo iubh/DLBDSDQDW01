@@ -21,7 +21,7 @@ df = pd.DataFrame([30.5, 23.2, 16.6, \
 df["temp_F"] = (df["temp_C"] * 9 / 5) + 32
 
 # %% create sample data
-df = pd.DataFrame(np.random.randint(0,100, \
+df = pd.DataFrame(np.random.randint(0, 100, \
     size=(100)), columns=["Values"])
 
 # %%
@@ -39,27 +39,47 @@ data = 20 * np.random.randn(2000) + 200
 plt.hist(data, bins = 200)
 
 # %% conduct a Shapiro-Wilk test
-from scipy.stats import shapiro
-stat, p = shapiro(data)
-print(stat, p)
+print(shapiro(data))
 
 # %% read sample data
 url = 'https://raw.githubusercontent.com/marsja/jupyter/'
 url += 'master/SimData/Data_to_Transform.csv'
 df = pd.read_csv(url)
 
+# %% conduct a Shapiro-Wilk test
+print(shapiro(df['Moderate Positive Skew']))
+
 # %% apply square tranformation
 df.insert(len(df.columns), 'Squared', \
     np.sqrt(df['Moderate Positive Skew']))
 
-# %%create histograms
-df_viz = df[["Moderate Positive Skew","Squared"]]
+# %% create histograms
+df_viz = df[["Moderate Positive Skew", "Squared"]]
 df_viz.hist(grid=False, figsize=(10, 6), bins=30)
+
+# %% conduct a Shapiro-Wilk test
+print(shapiro(df['Squared']))
 
 # %% apply logarithmic transformation
 df.insert(len(df.columns), 'Logarithmic', \
     np.log(df['Moderate Positive Skew']))
 
+# %% create histograms
+df_viz = df[["Moderate Positive Skew", "Logarithmic"]]
+df_viz.hist(grid=False, figsize=(10, 6), bins=30)
+
+# %% conduct a Shapiro-Wilk test
+print(shapiro(df['Logarithmic']))
+
 # %% apply Box-Cox transformation
 df.insert(len(df.columns), 'Boxcox', \
     boxcox(df['Moderate Positive Skew'])[0])
+
+# %% create histograms
+df_viz = df[["Moderate Positive Skew", "Boxcox"]]
+df_viz.hist(grid=False, figsize=(10, 6), bins=30)
+
+# %% conduct a Shapiro-Wilk test
+print(shapiro(df['Boxcox']))
+
+# %%

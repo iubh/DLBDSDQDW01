@@ -4,17 +4,17 @@
 
 # Droping missing values and outliers
 
-# %% load packages
+# %% import modules
 import pandas as pd
 import numpy as np
-from numpy import nan as NA
+from numpy import nan
 
 # %% generate sample data
 df = pd.DataFrame([\
     [1.3, 2.3, 5.2], \
-    [2.1, NA, NA], \
-    [NA,NA,NA], \
-    [NA, 9.2, 2.3]])
+    [2.1, nan, nan], \
+    [nan, nan, nan], \
+    [nan, 9.2, 2.3]])
 
 # %% print the raw data
 df
@@ -83,3 +83,5 @@ list(compress(data, data_z >= threshold))
 
 # console output:
 # [140]
+
+# %%

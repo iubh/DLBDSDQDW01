@@ -15,4 +15,6 @@ df = pd.DataFrame(values,columns=["Date"])
 df['day_of_week'] = df['Date'].dt.day_name()
 
 # %% construct a Boolean weekeend feature based on the date
-df.weekday = pd.DatetimeIndex(df.Date).dayofweek // 5
+df['weekend'] = pd.DatetimeIndex(df.Date).dayofweek // 5
+
+# %%

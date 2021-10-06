@@ -4,35 +4,26 @@
 
 # Twitter API
 
-
-# %% enter your Twitter API credentials
-# WARNING: DO NOT USE THIS IN PRODUCTION !!!
-# This is for educational use only!
-# Do not write credentials in plain text!
-API_KEY = 'xxx'
-API_SECRET = 'xxx'
-TOKEN_KEY = 'xxx'
-TOKEN_SECRET = 'xxx'
-
-# %% specify the URL to connect to
-url = 'https://api.twitter.com/1.1/search/'
-url += 'tweets.json?q=%climatechange'
-
-# %% load packages
+# %% import modules
 import oauth2
 import json
 from pandas.io.json import json_normalize
+import os
+import twitter_api_cred_to_envir
 
 # %% define a function to connect to the URL
 # using authentification
-def oauth_req(url, key, secret, http_method="GET", \
-    post_body=b"", http_headers=None):
+def oauth_req(url, api_key, api_secret, \
+    token_key, token_secret, \
+    http_method="GET", post_body=b"", \
+    http_headers=None):
     
     # set consumer and token and use those to create
     # a client object
-    consumer = oauth2.Consumer(key=API_KEY, \
-        secret=API_SECRET)
-    token = oauth2.Token(key=key, secret=secret)
+    consumer = oauth2.Consumer(key=api_key, \
+        secret=api_secret)
+    token = oauth2.Token(key=token_key, \
+        secret=token_secret)
     client = oauth2.Client(consumer, token) 
     
     # access the API
@@ -43,8 +34,19 @@ def oauth_req(url, key, secret, http_method="GET", \
     # return the content of the API response
     return content
 
+# %% specify the URL to connect to
+url = 'https://api.twitter.com/1.1/search/'
+url += 'tweets.json?q=%climatechange'
+
+# %% read credentials from environment variables
+API_KEY = os.environ["API_KEY"]
+API_SECRET = os.environ["API_SECRET"]
+TOKEN_KEY = os.environ["TOKEN_KEY"]
+TOKEN_SECRET = os.environ["TOKEN_SECRET"]
+
 # %% call the API
-data = oauth_req(url, TOKEN_KEY, TOKEN_SECRET)
+data = oauth_req(url, API_KEY, API_SECRET, \
+    TOKEN_KEY, TOKEN_SECRET)
 print(data)
 
 # %% convert the resulting string to JSON
@@ -69,7 +71,7 @@ for page in cursor.pages():
 ## Accessing the streaming API
 # %% load packages
 from tweepy.streaming import StreamListener
-from tweepy import OAuthHandler, Stream
+from tweepy import Stream
 
 # %% create a listener class
 class Listener(StreamListener):
@@ -78,5 +80,7 @@ class Listener(StreamListener):
         return True
 
 # %% listen to a topic within the stream
-stream = Stream(auth, Listener()).data
+stream = Stream(auth, Listener())
 stream.filter(track = ["climatechange"])
+
+# %%

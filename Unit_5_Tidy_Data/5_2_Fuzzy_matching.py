@@ -60,3 +60,5 @@ fuzz.partial_ratio(my_records[0]['book'], \
                    my_records[1]['book'])
 # console output:
 # 97
+
+# %%

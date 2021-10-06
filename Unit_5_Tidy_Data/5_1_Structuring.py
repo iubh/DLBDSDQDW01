@@ -10,6 +10,7 @@
 
 # %% import libraries
 import pandas as pd
+import numpy as np
 
 # %% generate data with date strings
 dates = pd.DataFrame([ \
@@ -19,16 +20,18 @@ dates = pd.DataFrame([ \
 
 # %% extract the day from a date string
 dates['Day'] = dates['Date'].str.slice(2, 4)
+dates['Month'] = dates['Date'].str.slice(0, 2)
+dates['Year'] = dates['Date'].str.slice(4, 9)
 
 print(dates)
 # console output:
-#        Date Day
-# 0  02082021  08
-# 1  02152021  15
-# 2  02122021  12
-# 3  02212021  21
-# 4  02012021  01
-# 5  02062021  06
+#        Date Day Month  Year
+# 0  02082021  08    02  2021
+# 1  02152021  15    02  2021
+# 2  02122021  12    02  2021
+# 3  02212021  21    02  2021
+# 4  02012021  01    02  2021
+# 5  02062021  06    02  2021
 
 
 ### combining columns
@@ -40,8 +43,8 @@ customers = pd.DataFrame([
         columns = ["Street", "Zip Code", "City"])
 
 # %% combine fields to a human readable address
-customers["Address"] = customers["Street"].astype(str) + \
-    ' , ' + customers["Zip Code"] + ' ' + customers["City"]
+customers["Address"] = customers["Street"] + \
+    ', ' + customers["Zip Code"] + ' ' + customers["City"]
 
 ## Interrecord Structuring
 
@@ -49,7 +52,7 @@ customers["Address"] = customers["Street"].astype(str) + \
 
 # %% generate the data
 cars = pd.DataFrame([ \
-    ['VW', 'GOlf'], \
+    ['VW', 'Golf'], \
     ['VW', 'Passat'], \
     ['VW', 'Polo'], \
     ['Mercedes', 'A-Class'], \
@@ -91,7 +94,6 @@ df = pd.DataFrame({ \
     "Amount": [450, 200, 350, 350, 200, 250]})
 
 # %% pivot the table
-import numpy as np
 pivot = pd.pivot_table(df, values="Amount", \
     index=["Account-NR"], columns=["Job"], \
         aggfunc=np.sum)
@@ -102,3 +104,5 @@ print(pivot)
 # Account-NR                                     
 # A0023             NaN             650.0     NaN
 # A0024           700.0             200.0   250.0
+
+# %%

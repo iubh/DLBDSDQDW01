@@ -7,3 +7,4 @@ note_to_myself.txt
 *.pdf
 *.parquet
 data.csv
+twitter_api_cred_to_envir.py
