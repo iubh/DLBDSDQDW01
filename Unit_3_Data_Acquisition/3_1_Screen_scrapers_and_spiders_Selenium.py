@@ -6,6 +6,7 @@
 
 # %% load packages
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 # %% specifiy a webdriver
 browser = webdriver.Firefox()
@@ -21,7 +22,7 @@ browser.execute_script("window.scrollTo(0, 2000)")
 
 # %% locate the next button
 next_button = browser.\
-    find_element_by_partial_link_text('Next')
+    find_element(by=By.PARTIAL_LINK_TEXT,value='Next')
 
 # %% click the next button
 next_button.click()
